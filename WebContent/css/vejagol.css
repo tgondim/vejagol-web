@@ -1,0 +1,53 @@
+
+.twitter-follow {
+	margin-left: 5px;
+	margin-bottom: 5px;
+}
+
+.facebook-like {
+  margin-left: 5px;
+}
+
+.twitter-timeline {
+	padding: 10px;	
+}
+.vejagol-anuncio {
+	padding: 10px;
+	
+}
+.facebook-comments {
+	padding: 5px;
+}
+
+/* Corner radius */
+.ui-corner-all, .ui-corner-top, .ui-corner-left, .ui-corner-tl { -moz-border-radius-topleft: 6px; -webkit-border-top-left-radius: 6px; -khtml-border-top-left-radius: 6px; border-top-left-radius: 6px; }
+.ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-tr { -moz-border-radius-topright: 6px; -webkit-border-top-right-radius: 6px; -khtml-border-top-right-radius: 6px; border-top-right-radius: 6px; }
+.ui-corner-all, .ui-corner-bottom, .ui-corner-left, .ui-corner-bl { -moz-border-radius-bottomleft: 6px; -webkit-border-bottom-left-radius: 6px; -khtml-border-bottom-left-radius: 6px; border-bottom-left-radius: 6px; }
+.ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br { -moz-border-radius-bottomright: 6px; -webkit-border-bottom-right-radius: 6px; -khtml-border-bottom-right-radius: 6px; border-bottom-right-radius: 6px; }
+
+#mask {position:absolute;
+z-index:9000;
+background-color:#000;
+display:none;
+}
+
+#boxes .window {
+position:absolute;
+/*width:440px;
+height:200px;*/
+display:none;
+z-index:9999;
+/*padding:20px;*/
+}
+
+/* Personalize a janela modal aqui. Você pode adicionar uma imagem de fundo. */
+#boxes #dialog {
+/*width:375px;
+height:203px;*/
+}
+/* posiciona o link para fechar a janela */
+.close {
+	margin-left: 10px;
+/*display:block;
+text-align:right;*/
+}
