@@ -90,6 +90,10 @@ function onLoad() {
 	listarJogos(1, "data", "", "false");
 }
 
+function reload() {
+	location.href = "http://www.vejagol.com/";
+}
+
 function limparListaJogos() {
 	$('#divListaJogos1').empty();
 	$('#divListaJogos2').empty();
@@ -199,12 +203,10 @@ function listarJogos(pagina, ordem, filtros, ascending) {
 		  dataType: "json",	  
 		  data: listaJogosParameters,	  
 		  success: function(data) {
-				//$('#divMarcadores').empty();
 				if (data.result == "OK") {
 					listaJogos = data.listaJogos;
 					for (var i = 0; i < listaJogos.length; i++) {
 						addJogo('#divListaJogos'+divNumber, data.listaJogos[i]);
-						//$('#divProgressBar').css('width', progressBarWidth+(100/listaJogos.length) + '%');
 						divNumber = Math.floor((i+1)/ 3) + 1;
 					}									
 				} else {
