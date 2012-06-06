@@ -33,42 +33,47 @@ var videoLink = "";
 function bindModalClick() {
 	// seleciona os elementos a com atributo name="modal"
 	$('a[name=modal]').click(function(e) {
-		// cancela o comportamento padrão do link
-		e.preventDefault();
-
-		// armazena o atributo href do link
-		var id = $(this).attr('href');
-
-		// armazena a largura e a altura da tela
-		var maskHeight = $(document).height();
-		var maskWidth = $(window).width();
-
-		// Define largura e altura do div#mask iguais ás dimensões da tela
-		$('#mask').css({
-			'width' : maskWidth,
-			'height' : maskHeight
-		});
-
-		// efeito de transição
-		$('#mask').fadeIn(1000);
-		$('#mask').fadeTo("slow", 0.8);
-
-		// armazena a largura e a altura da janela
-		var winH = $(window).height();
-		var winW = $(window).width();
-		// centraliza na tela a janela popup
-		$(id).css('top', winH / 2 - $(id).height() / 2);
-		$(id).css('left', winW / 2 - $(id).width() / 2);
-		$('#videoPlayer').attr('src', e.srcElement.id);
-		$('.fb-comments').attr('data-href', e.srcElement.id);
-		// efeito de transição
-		$(id).fadeIn(2000);
-		CenterItem('#divPlayer');
+		if (!isMobile()) {
+			// cancela o comportamento padr‚Äπo do link
+			e.preventDefault();
+	
+			// armazena o atributo href do link
+			var id = $(this).attr('href');
+	
+			// armazena a largura e a altura da tela
+			var maskHeight = $(document).height();
+			var maskWidth = $(window).width();
+	
+			// Define largura e altura do div#mask iguais ‚Ä°s dimens‚Ä∫es da tela
+			$('#mask').css({
+				'width' : maskWidth,
+				'height' : maskHeight
+			});
+	
+			// efeito de transiÔøΩ‚Äπo
+			$('#mask').fadeIn(1000);
+			$('#mask').fadeTo("slow", 0.8);
+	
+			// armazena a largura e a altura da janela
+			var winH = $(window).height();
+			var winW = $(window).width();
+			
+			// centraliza na tela a janela popup
+			$(id).css('top', winH / 2 - $(id).height() / 2);
+			$(id).css('left', winW / 2 - $(id).width() / 2);
+			$('#videoPlayer').attr('src', e.srcElement.id);
+			$('.fb-comments').attr('data-href', e.srcElement.id);
+			// efeito de transiÔøΩ‚Äπo
+			$(id).fadeIn(2000);
+			CenterItem('#divPlayer');
+		} else {
+			location.href = e.srcElement.id;
+		}
 	});
 
-	// se o botãoo fechar for clicado
+	// se o bot‚Äπoo fechar for clicado
 	$('.window .close').click(function(e) {
-		// cancela o comportamento padrão do link
+		// cancela o comportamento padr‚Äπo do link
 		e.preventDefault();
 		$('#videoPlayer').attr('src', '');
 		$('#mask, .window').hide();
@@ -145,19 +150,19 @@ function onClickPaginacao(element) {
 	return true;
 }
 	
-function getElementsByClassName(classname, node)  {
-    if(!node) node = document.getElementsByTagName("body")[0];
-    var a = [];
-    var re = new RegExp('\\b' + classname + '\\b');
-    var els = node.getElementsByTagName("*");
-    for(var i=0,j=els.length; i<j; i++)
-        if(re.test(els[i].className))a.push(els[i]);
-    return a;
-}
+//function getElementsByClassName(classname, node)  {
+//    if(!node) node = document.getElementsByTagName("body")[0];
+//    var a = [];
+//    var re = new RegExp('\\b' + classname + '\\b');
+//    var els = node.getElementsByTagName("*");
+//    for(var i=0,j=els.length; i<j; i++)
+//        if(re.test(els[i].className))a.push(els[i]);
+//    return a;
+//}
 	
 function addJogo(divId, jogo) {
-	var idJogo = jogo.timeCasa;
-	var videoThumbnail;
+	//var idJogo = jogo.timeCasa;
+	var videoThumbnail = "";
 	if (jogo.link.indexOf('youtube') != -1) {
 		videoThumbnail = jogo.link.replace('http://www.youtube.com/embed/', '//i1.ytimg.com/vi/') + '/hqdefault.jpg';
 	} else if (jogo.link.indexOf('dailymotion') != -1) {
@@ -224,6 +229,6 @@ function CenterItem(theItem){
     winHeight>$(theItem).height() ? $(theItem).animate({'top':theMiddle},300) : $(theItem).animate({'top':'0'},300);
 }
 
-$(window).resize(function() {
-    CenterItem('#videoPlayer');
-});
+//$(window).resize(function() {
+//    CenterItem('#videoPlayer');
+//});
