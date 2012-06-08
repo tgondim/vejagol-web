@@ -174,10 +174,13 @@ function addJogo(divId, jogo) {
 	}
 	$(divId).append(	
 			'<div class="span4">'
-			+ '<p>' + jogo.timeCasa + ' ' + jogo.placarCasa + ' X ' + jogo.placarVisitante + ' ' + jogo.timeVisitante + '</p>'
-			+ '<img class="ui-corner-all" src="' + videoThumbnail + '" href="' + jogo.link + '"/>'
-			+'<p>' + jogo.data.dayOfMonth + "/" + (jogo.data.month + 1) + "/" + jogo.data.year + '</p>'
-			+ '<p><a id="' + jogo.link + '" class="btn" href="#dialog" name="modal">Assistir &raquo;</a></p>'
+			+ '<a href="#dialog" name="modal">'
+			+ '<img id="' + jogo.link + '" class="ui-corner-all" src="' + videoThumbnail + '"/></a>'
+			+ '<p>' + '<img src="' + getBandeira(jogo.liga) + '"/>&nbsp;'  
+			+ jogo.liga + ((jogo.campeonato != "") ? ' - ' + jogo.campeonato : '') 
+			+ '<br>' + unescape(jogo.timeCasa) + ' ' + jogo.placarCasa + ' X ' + unescape(jogo.placarVisitante) + ' ' + jogo.timeVisitante
+			+ '<br>' + jogo.data.dayOfMonth + "/" + (jogo.data.month + 1) + "/" + jogo.data.year + '</p>'
+			//+ '<p><a id="' + jogo.link + '" class="btn" href="#dialog" name="modal">Assistir &raquo;</a></p>'
 			+ '</div>');
 }
 

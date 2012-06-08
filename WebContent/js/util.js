@@ -5,3 +5,172 @@ function isMobile(){
 	else
 		return false;
 }
+
+function getBandeira(liga) {
+	if (liga == "Brasil") {
+		return "img/br.gif";
+	}
+	if (liga == "Argentina") {
+		return "img/ar.gif";
+	}
+	if (liga == "Portugal") {
+		return "img/pt.gif.gif";
+	}
+	if (liga == "Italia") {
+		return "img/it.gif";
+	}
+	if (liga == "Romenia") {
+		return "img/ro.gif";
+	}
+	if (liga == "Grecia") {
+		return "img/gr.gif";
+	}
+	if (liga == "Ucrania") {
+		return "img/ua.gif";
+	}
+	if (liga == "Espanha") {
+		return "img/es.gif";
+	}
+	if (liga == "Turquia") {
+		return "img/tr.gif";
+	}
+	if (liga == "Bosnia") {
+		return "img/ba.png";
+	}
+	if (liga == "Alemanha") {
+		return "img/de.gif";
+	}
+	if (liga == "Peru") {
+		return "img/pe.gif";
+	}
+	if (liga == "Polonia") {
+		return "img/pl.gif";
+	}
+	if (liga == "Franca") {
+		return "img/fr.gif";
+	}
+	if (liga == "Inglaterra") {
+		return "img/england.gif";
+	}
+	if (liga == "Chipre") {
+		return "img/cy.gif";
+	}
+	if (liga == "Sui") {
+		return "img/ch.gif";
+	}
+	if (liga == "Bulgaria") {
+		return "img/bg.gif";
+	}
+	if (liga == "Montenegro") {
+		return "img/montenegro.png";
+	}
+	if (liga == "Holanda") {
+		return "img/nl.gif";
+	}
+	if (liga == "Russia") {
+		return "img/ru.gif";
+	}
+	if (liga == "Mexico") {
+		return "img/mx.gif";
+	}
+	if (liga == "Costa Rica") {
+		return "img/cr.gif";
+	}
+	if (liga == "Colombia") {
+		return "img/co.gif";
+	}
+	if (liga == "Equador") {
+		return "img/eq.gif";
+	}
+	if (liga == "Bolivia") {
+		return "img/bo.gif";
+	}
+	if (liga == "Arabia Saudita") {
+		return "img/sarab.gif";
+	}
+	if (liga == "Estados Unidos") {
+		return "img/us.gif";
+	}
+	if (liga == "Marrocos") {
+		return "img/marocco.gif";
+	}
+	if (liga == "Israel") {
+		return "img/il.gif";
+	}
+	if (liga == "Rep") {
+		return "img/cz.gif";
+	}
+	if (liga == "Champions League") {
+		return "img/champ.gif";
+	}
+	if (liga == "Irao") {
+		return "img/iran.png";
+	}
+	if (liga == "Servia") {
+		return "img/sb.gif";
+	}
+	if (liga == "FIFA") {
+		return "img/fifa.gif";
+	}
+	if (liga == "Paraguay") {
+		return "img/py.gif";
+	}
+	if (liga == "Croacia") {
+		return "img/hr.gif";
+	}
+	if (liga == "Venezuela") {
+		return "img/ve.gif";
+	}
+	if (liga == "Guatemala") {
+		return "img/guatemala.png";
+	}
+	if (liga == "Belgica") {
+		return "img/be.gif";
+	}
+	if (liga == "Australia") {
+		return "img/au.gif";
+	}
+	if (liga == "Japao") {
+		return "img/jp.gif";
+	}
+	if (liga == "Chile") {
+		return "img/cl.gif";
+	}
+	if (liga == "Coreia do Sul") {
+		return "img/south_korea.png";
+	}
+	if (liga == "Austria") {
+		return "img/at.gif";
+	}
+	if (liga == "Outras Ligas") {
+		return "img/world.gif";
+	}
+	if (liga == "Uruguai") {
+		return "img/uy.gif";
+	}
+	if (liga == "Dinamarca") {
+		return "img/dk.gif";
+	}
+	if (liga == "Liga Europa") {
+		return "img/europa.gif";
+	}
+	if (liga == "Hungria") {
+		return "img/hu.gif";
+	}
+	if (liga == "Latvia") {
+		return "img/latvia.png";
+	}
+	if (liga == "Noruega") {
+		return "img/no.gif";
+	}
+	if (liga == "Suecia") {
+		return "img/se.gif";
+	}
+	if (liga == "UEFA") {
+		return "img/uefa.gif";
+	}
+	if (liga == "Amigavel") {
+		return "img/friendly.gif";
+	}
+}
+
