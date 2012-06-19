@@ -30,6 +30,12 @@ var videoLink = "";
 }
 (document,"script","twitter-wjs");
 
+$('#buscarJogos').focusout(function () {
+	ativarPagina(1);
+	limparListaJogos();
+	buscarJogos(paginaSelecionada, mainOrdem, $(this).val(), mainAscending);
+});
+
 function bindModalClick() {
 	// seleciona os elementos a com atributo name="modal"
 	$('a[name=modal]').click(function(e) {
@@ -66,6 +72,8 @@ function bindModalClick() {
 			// efeito de transi�‹o
 			$(id).fadeIn(2000);
 			CenterItem('#divPlayer');
+			//$('#divPlayer').show();
+			
 		} else {
 			location.href = e.srcElement.id;
 		}
@@ -171,14 +179,16 @@ function addJogo(divId, jogo) {
 		videoThumbnail = jogo.link.replace('http://www.youtube.com/embed/', '//i1.ytimg.com/vi/') + '/hqdefault.jpg';
 	} else if (jogo.link.indexOf('dailymotion') != -1) {
 		videoThumbnail = jogo.link.replace('embed', 'thumbnail');
+	} else {
+		videoThumbnail = "img/futebol.jpg";
 	}
 	$(divId).append(	
 			'<div class="span4">'
 			+ '<a href="#dialog" name="modal">'
 			+ '<img id="' + jogo.link + '" class="ui-corner-all" src="' + videoThumbnail + '"/></a>'
 			+ '<p>' + '<img src="' + getBandeira(jogo.liga) + '"/>&nbsp;'  
-			+ jogo.liga + ((jogo.campeonato != "") ? ' - ' + jogo.campeonato : '') 
-			+ '<br>' + unescape(jogo.timeCasa) + ' ' + jogo.placarCasa + ' X ' + unescape(jogo.placarVisitante) + ' ' + jogo.timeVisitante
+			+ escapeHTML(jogo.liga) + ((jogo.campeonato != "") ? ' - ' + escapeHTML(jogo.campeonato) : '') 
+			+ '<br>' + escapeHTML(jogo.timeCasa) + ' ' + jogo.placarCasa + ' X ' + jogo.placarVisitante + ' ' + escapeHTML(jogo.timeVisitante)
 			+ '<br>' + jogo.data.dayOfMonth + "/" + (jogo.data.month + 1) + "/" + jogo.data.year + '</p>'
 			//+ '<p><a id="' + jogo.link + '" class="btn" href="#dialog" name="modal">Assistir &raquo;</a></p>'
 			+ '</div>');
@@ -198,9 +208,46 @@ function listarJogos(pagina, ordem, filtros, ascending) {
 			"ate" : mainAte,
 			"ordem" : mainOrdem,
 			"filtros" : mainFiltros,
-			"ascending" : mainAscending};
+			"ascending" : mainAscending, 
+			"escapeHTML" : true};
 	$.ajax({
 		  url: "../VejaGolWS/ListarJogosServlet",
+		  type: "POST",
+		  async: "true",
+		  dataType: "json",	  
+		  data: listaJogosParameters,		  
+		  success: function(data) {
+				if (data.result == "OK") {
+					listaJogos = data.listaJogos;
+					for (var i = 0; i < listaJogos.length; i++) {
+						addJogo('#divListaJogos'+divNumber, data.listaJogos[i]);
+						divNumber = Math.floor((i+1)/ 3) + 1;
+					}									
+				} else {
+					//faz nada  
+				}
+				bindModalClick();
+				$('#divCarregando').hide();
+			}
+		});
+} 
+
+function buscarJogos(pagina, ordem, chaves, ascending) {
+	var divNumber = 1;
+	$('#divCarregando').show();
+	mainDe = ((pagina-1) * 10);
+	mainAte = (mainDe + 9);
+	mainOrdem = ordem;
+	mainChaves = chaves;
+	mainAscending = ascending;
+	
+	var listaJogosParameters = {"de" : mainDe, 
+			"ate" : mainAte,
+			"ordem" : mainOrdem,
+			"chaves" : mainChaves,
+			"ascending" : mainAscending};
+	$.ajax({
+		  url: "../VejaGolWS/BuscarJogosServlet",
 		  type: "POST",
 		  async: "true",
 		  dataType: "json",	  
