@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8">
+		<title>VejaGol. Clique e veja!</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="author" content="SoftInSoftware">
+<!-- 		<meta name="copyright" content="SoftInSoftware"> -->
+		<meta name="description"
+			content="Portal de gols de futebol. Aqui você tem organizados os gols dos principais times de futebol profissional do planeta. Design de Marcio Verçoza">
+<!-- 		<meta name="distribution" -->
+<!-- 			content="Aplicativo Android, Web e Facebook Apps"> -->
+		<meta name="generator" content="Eclipse Indigo">
+		<meta name="robots" content="noindex,nofollow">
+		
+		<!-- Le styles -->
+		<link href="./css/bootstrap.css" rel="stylesheet">
+		<link href="./css/vejagol.css" rel="stylesheet">
+		<style type="text/css">
+		body {
+			padding-top: 60px;
+			padding-bottom: 40px;
+		}
+		
+		.sidebar-nav {
+			padding: 9px 0;
+		}
+		</style>
+		<link href="./css/bootstrap-responsive.css" rel="stylesheet">
+		
+		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+		      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		    <![endif]-->
+		
+		<!-- Le fav and touch icons -->
+		<link rel="shortcut icon" href="./img/logo-vejagol.png">
+		<link rel="apple-touch-icon-precomposed" sizes="144x144"
+			href="./img/logo-vejagol-apple-touch-icon-144-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="114x114"
+			href="./img/logo-vejagol-apple-touch-icon-114-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72"
+			href="./img/logo-vejagol-apple-touch-icon-72-precomposed.png">
+		<link rel="apple-touch-icon-precomposed"
+			href="./img/logo-vejagol-apple-touch-icon-57-precomposed.png">
+		
+		<link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
+		<script src="http://vjs.zencdn.net/c/video.js"></script>
+	</head>
+
+	<body>
+		<div id="fb-root"></div>
+		<div class="navbar navbar-fixed-top">
+	      <div class="navbar-inner">
+	        <div class="container-fluid">
+	          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>			
+	          </a>
+	          <a class="brand" href="#" onclick="reload();">VejaGol</a>
+	          <div class="nav-collapse">
+	            <ul class="nav">
+	              <li><a href="./">Gols</a></li>
+	              <li class="active"><a href="./contato.html">Contato</a></li>
+<!-- 	              <li><a href="./sobre.html">Sobre</a></li> -->
+	            </ul>
+	          </div><!--/.nav-collapse -->
+	        </div>
+	      </div>
+	    </div> 	
+		<div class="container-fluid">    	
+	      <div class="row-fluid">
+	        <div class="span3">
+	          <div class="well sidebar-nav">
+				<ul class="nav nav-list">
+					<li class="menu-esquerdo">					
+						<a href="#" onclick="reload()"><img class="ui-corner-all" src="img/logo-vejagol-grande.jpg"/></a>					
+					</li>
+					<li class="divider"></li>
+					<li class="twitter-timeline">											
+						<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+						<script>
+							new TWTR.Widget({
+							  version: 2,
+							  type: 'profile',
+							  rpp: 3,
+							  interval: 30000,
+							  width: 'auto',
+							  height: 200,
+							  theme: {
+								shell: {
+								  background: '#7a7a7a',
+								  color: '#ffffff'
+								},
+								tweets: {
+								  background: '#ffffff',
+								  color: '#000000',
+								  links: '#000b80'
+								}
+							  },
+							  features: {
+								scrollbar: true,
+								loop: false,
+								live: false,
+								behavior: 'all'
+							  }
+							}).render().setUser('vejagol').start();
+						</script>
+					</li>
+					<li class="divider"></li>
+					<li class="vejagol-anuncio ui-corner-all">
+						<a href="http://market.android.com/details?id=com.vejagol.android">
+							<img class="ui-corner-all" src="img/vejagol-android.jpg"/>
+						</a>
+					</li>
+					<li class="divider"></li>
+					<li class="twitter-follow">											
+						<div class="fb-send" data-href="http://www.vejagol.com"></div>
+	<!-- 					<div> -->
+							<a href="https://twitter.com/vejagol" class="twitter-follow-button" data-show-count="false" data-lang="pt" data-show-screen-name="false">Seguir @vejagol</a>
+	<!-- 					</div> -->
+					</li>
+					<li class="facebook-like">											
+						<div class="fb-like" data-href="http://www.vejagol.com" data-send="false" data-width="200" data-show-faces="true"></div>
+					</li>
+				</ul>
+	          </div><!--/.well -->
+	        </div><!--/span-->
+	        
+	        <div class="span3 pull-center">
+				<form class="well" onsubmit="return false;">
+				  <h3 style="{padding: 15px; }">Contato VejaGol</h3>
+				  <input type="text" class="span12" placeholder="Nome e sobrenome">
+				  <input type="text" class="span12" placeholder="Email">
+				  <input type="text" class="span12" placeholder="Telefone">
+				  <div class="control-group">
+		            <label class="control-label" for="select01">Como nos conheceu?</label>
+		            <div class="controls">
+		              <select id="select01">
+		                <option>Internet</option>
+		                <option>Twitter</option>
+		                <option>Facebook</option>
+		                <option>Indica&ccedil;&atilde;o de amigo</option>
+		                <option>Outros</option>
+		              </select>
+		            </div>
+		          </div>
+				  <input type="text" class="span12" placeholder="Assunto">
+				  <input type="text" class="span12" placeholder="Mensagem">
+				  <button id="btnEnviar" type="submit" class="btn" onclick="onClickEnviar();">Enviar</button>
+				  <button type="reset" class="btn">Limpar</button>
+				</form>
+	      	</div>  
+	      </div><!--/row-->
+	      <hr>
+	      <footer>
+	        <p>&copy; SoftInSoftware 2012</p>
+	      </footer>
+	
+	    </div>
+       	<!-- Le javascript
+	    ================================================== -->
+	    <!-- Placed at the end of the document so the pages load faster -->
+	    <script src="./js/jquery.js"></script>
+	    <script src="./js/bootstrap-transition.js"></script>
+	    <script src="./js/bootstrap-alert.js"></script>
+	    <script src="./js/bootstrap-modal.js"></script>
+	    <script src="./js/bootstrap-dropdown.js"></script>
+	    <script src="./js/bootstrap-scrollspy.js"></script>
+	    <script src="./js/bootstrap-tab.js"></script>
+	    <script src="./js/bootstrap-tooltip.js"></script>
+	    <script src="./js/bootstrap-popover.js"></script>
+	    <script src="./js/bootstrap-button.js"></script>
+	    <script src="./js/bootstrap-collapse.js"></script>
+	    <script src="./js/bootstrap-carousel.js"></script>
+	    <script src="./js/bootstrap-typeahead.js"></script>
+		<script type="text/javascript" src="./js/jquery-1.6.1.min.js"></script>
+		<script type="text/javascript" src="./js/json2.js"></script>
+	    <script src="./js/contato.js"></script>
+	    <script src="./js/util.js"></script>
+		<script src="./js/twitter.js"></script>
+   		<script src="./js/facebook.js"></script>
+	</body>
+</html>
