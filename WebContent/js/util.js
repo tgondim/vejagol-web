@@ -49,6 +49,8 @@ function escapeHTML(s) {
 	s.replace('Ó', "&Oacute;");
 	s.replace('ø', "&oslash;");
 	s.replace('Ø', "&Oslash;");
+	s.replace('ñ', "&ntilde;");
+	s.replace('Ñ', "&Ntilde;");
 	s.replace('ß', "&szlig;");
 	s.replace('ù', "&ugrave;");
 	s.replace('Ù', "&Ugrave;");
@@ -227,6 +229,9 @@ function getBandeira(liga) {
 	}
 	if (liga == "Suecia") {
 		return "img/se.gif";
+	}
+	if (liga == "China") {
+		return "img/cn.gif";
 	}
 	if (liga == "UEFA") {
 		return "img/uefa.gif";

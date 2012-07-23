@@ -57,21 +57,21 @@
           <a class="brand" href="#" onclick="reload();">VejaGol</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Gols</a></li>
-              <li><a href="#about">Melhores da Semana</a></li>
-              <li><a href="#contact">Contato</a></li>
-<!-- 			  <li class="divider-vertical pull-right"></li> -->
-<!-- 			  <li> -->
-<!-- 				<form class="navbar-search pull-right"> -->
-<!-- 					<input id='buscarJogos' type="text" class="search-query" placeholder="Buscar"> -->
-<!-- 				</form> -->
-<!-- 			  </li> -->
+              <li class="active"><a href="./">Gols</a></li>
+              <li><a href="./contato.html">Contato</a></li>
+<!--               <li><a href="./sobre.html">Sobre</a></li> -->
+			  <li class="divider-vertical pull-right"></li>
+			  <li class="pull-right">
+				<form class="navbar-search pull-right" onsubmit="return false">
+					Busca por&nbsp;&nbsp;<input id='buscarJogos' type="text" class="search-query" placeholder="Time, Liga ou Campeonato" onclick="" >
+				</form>
+			  </li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>
-    </div>
-    <div class="container-fluid">
+    </div>    
+    <div class="container-fluid">    	
       <div class="row-fluid">
         <div class="span3">
           <div class="well sidebar-nav">
@@ -139,6 +139,9 @@
           <div id="divCarregando" class="pagination-centered">
          	 <img src="./img/carregando.gif" alt="Carregando jogos..."/>
           </div>
+          <div id="divNenhumJogoEncontrado" class="pagination-centered">
+<!--          	 <h2>Nenhum jogo foi encontrado.</h2> -->
+          </div>
           <div id="divListaJogos2" class="row-fluid">
           </div><!--/row-->
           <hr>
@@ -202,6 +205,8 @@
 	<script type="text/javascript" src="./js/json2.js"></script>
     <script src="./js/util.js"></script>
     <script src="./js/index.js"></script>
+    <script src="./js/twitter.js"></script>
+    <script src="./js/facebook.js"></script>
 
   </body>
 </html>

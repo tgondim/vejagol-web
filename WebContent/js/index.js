@@ -8,28 +8,6 @@ var mainOrdem = "data";
 var listaJogos;
 var videoLink = "";
 
-//inicializo o sdk do facebook
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1&appId=179155015544329";
-  fjs.parentNode.insertBefore(js, fjs);
-}
-(document, 'script', 'facebook-jssdk'));
-
-//inicializo o sdk do twitter
-!function(d,s,id) {
-	var js,fjs=d.getElementsByTagName(s)[0];
-	if (!d.getElementById(id)) {
-		js=d.createElement(s);
-		js.id=id;
-		js.src="//platform.twitter.com/widgets.js";
-		fjs.parentNode.insertBefore(js,fjs);
-	}
-}
-(document,"script","twitter-wjs");
-
 $('#buscarJogos').focusout(function () {
 	ativarPagina(1);
 	limparListaJogos();
@@ -94,7 +72,8 @@ function bindModalClick() {
 		$('.window').hide();
 	});
 }
-function onLoad() {	
+function onLoad() {
+	$('#divNenhumJogoEncontrado').hide();
 	listarJogos(1, "data", "", "false");
 }
 
@@ -124,7 +103,13 @@ function onAnteriorClick() {
 		paginaSelecionada--;
 		ativarPagina(paginaSelecionada);
 		limparListaJogos();
-		listarJogos(paginaSelecionada, mainOrdem, mainFiltros, mainAscending);
+		
+		if ($('#buscarJogos').val() == "") {
+			listarJogos(paginaSelecionada, mainOrdem, mainFiltros, mainAscending);
+		} else {
+			buscarJogos(paginaSelecionada, mainOrdem, $('#buscarJogos').val(), mainAscending);
+		}
+		
 		return true;	
 	}
 	return false;
@@ -134,7 +119,13 @@ function onProximoClick() {
 	paginaSelecionada++;
 	ativarPagina(paginaSelecionada);
 	limparListaJogos();
-	listarJogos(paginaSelecionada, mainOrdem, mainFiltros, mainAscending);
+	
+	if ($('#buscarJogos').val() == "") {
+		listarJogos(paginaSelecionada, mainOrdem, mainFiltros, mainAscending);
+	} else {
+		buscarJogos(paginaSelecionada, mainOrdem, $('#buscarJogos').val(), mainAscending);
+	}
+	
 	return true;	
 }
 
@@ -157,7 +148,12 @@ function onClickPaginacao(element) {
 		paginaSelecionada = element.innerHTML;
 		ativarPagina(paginaSelecionada);
 		limparListaJogos();
-		listarJogos(paginaSelecionada, mainOrdem, mainFiltros, mainAscending);		
+		
+		if ($('#buscarJogos').val() == "") {
+			listarJogos(paginaSelecionada, mainOrdem, mainFiltros, mainAscending);
+		} else {
+			buscarJogos(paginaSelecionada, mainOrdem, $('#buscarJogos').val(), mainAscending);
+		}
 	}
 	return true;
 }
@@ -235,6 +231,8 @@ function listarJogos(pagina, ordem, filtros, ascending) {
 function buscarJogos(pagina, ordem, chaves, ascending) {
 	var divNumber = 1;
 	$('#divCarregando').show();
+	$('#divNenhumJogoEncontrado').html("");
+	$('#divNenhumJogoEncontrado').hide();
 	mainDe = ((pagina-1) * 10);
 	mainAte = (mainDe + 9);
 	mainOrdem = ordem;
@@ -255,10 +253,14 @@ function buscarJogos(pagina, ordem, chaves, ascending) {
 		  success: function(data) {
 				if (data.result == "OK") {
 					listaJogos = data.listaJogos;
-					for (var i = 0; i < listaJogos.length; i++) {
-						addJogo('#divListaJogos'+divNumber, data.listaJogos[i]);
-						divNumber = Math.floor((i+1)/ 3) + 1;
-					}									
+					if (listaJogos.length == 0) {
+						nenhumElementoEncontrado(mainChaves);
+					} else {
+						for (var i = 0; i < listaJogos.length; i++) {
+							addJogo('#divListaJogos'+divNumber, data.listaJogos[i]);
+							divNumber = Math.floor((i+1)/ 3) + 1;
+						}	
+					}
 				} else {
 					//faz nada  
 				}
@@ -267,6 +269,11 @@ function buscarJogos(pagina, ordem, chaves, ascending) {
 			}
 		});
 } 
+
+function nenhumElementoEncontrado(chaveBuscada) {
+	$('#divNenhumJogoEncontrado').html("<h2>Nenhum jogo foi encontrado buscando por \"" + chaveBuscada + "\".</h2>");
+	$('#divNenhumJogoEncontrado').show();
+}
 
 function CenterItem(theItem){
     var winWidth=$(window).width();
